@@ -16,6 +16,8 @@ import { CheckoutComponent } from './pages/website/checkout/checkout.component';
 import { CustomerCartComponent } from './pages/website/customer-cart/customer-cart.component';
 import { CustomerOrdersComponent } from './pages/website/customer-orders/customer-orders.component';
 import { LandingComponent } from './pages/website/landing/landing.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { LandingComponent } from './pages/website/landing/landing.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
