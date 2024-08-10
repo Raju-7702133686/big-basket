@@ -4,7 +4,7 @@
       <form action="#" class="sign-in-form" [formGroup]="loginForm">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
-            <i class="fa-light fa-user"></i>
+          <i class="fa-light fa-user"></i>
           <input type="text" placeholder="Username" formControlName="username" />
           <div class="text-danger err-text" *ngIf="loginForm.get('username')?. invalid && loginForm.get('username')?. touched || isSubmitted && loginForm.get('username')?.invalid">
             <div *ngIf="loginForm.get('username')?.errors?.['required']"> Username is required </div>
