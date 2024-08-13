@@ -12,6 +12,8 @@ import { StudentService } from 'src/app/services/student.service';
 export class AllStudentsComponent {
   students:any[]=[];
   serch:any;
+  column:any;
+  order:any;
   constructor(private studentService: StudentService, private router: Router){
     this.studentService.getStudents().subscribe(
       (data:any)=>{
@@ -27,6 +29,16 @@ getFilteredStudents(){
   this.studentService.getFilteredStudents(this.serch).subscribe(
     (data:any)=>{
       this.students=data;
+    }
+  )
+}
+sorting(){
+  this.studentService.getSortedStudents(this.column, this.order).subscribe(
+    (data:any)=>{
+      this.students=data;
+    },
+    (err:any)=>{
+      alert("sorting not working")
     }
   )
 }

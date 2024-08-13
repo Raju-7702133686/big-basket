@@ -24,6 +24,9 @@ export class StudentService {
   getFilteredStudents(serch:any){
     return this.httpClient.get(this.url+"?filter="+serch);
   }
+  getSortedStudents(column:any,order:any):Observable<any>{
+    return this.httpClient.get(this.url+"?sortBy="+column,order);
+  }
   deleteStudent(id:any){
     return this.httpClient.delete(this.url+"/"+id)
   }

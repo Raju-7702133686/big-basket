@@ -1,5 +1,19 @@
 <div class="container">
     <input type="text" class="form-control" [(ngModel)]="serch" placeholder="search" (keyup)="getFilteredStudents()">
+
+    <div>
+        <select name="" id="" [(ngModel)]="column">
+            <option value="name">Name</option>
+            <option value="gender">Gender</option>
+            <option value="city">City</option>
+            <option value="email">email</option>
+        </select>
+        <select name="" id="" [(ngModel)]="order">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+        </select>
+        <button class="btn btn-success" (click)="sorting()">sorting</button>
+    </div>
     <table class="table table-striped" id="myTable">
         <thead>
             <th>id</th>
