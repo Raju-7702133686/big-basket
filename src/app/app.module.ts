@@ -18,6 +18,8 @@ import { CustomerOrdersComponent } from './pages/website/customer-orders/custome
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CreateStudentComponent } from './pages/admin/create-student/create-student.component';
+import { AllStudentsComponent } from './pages/admin/all-students/all-students.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CheckoutComponent,
     CustomerCartComponent,
     CustomerOrdersComponent,
-    LandingComponent
+    LandingComponent,
+    CreateStudentComponent,
+    AllStudentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,365 @@
+<div class="container">
+  <section
+    class="vh-100 bg-image"
+    style="
+      background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');
+    "
+  >
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">
+                  Create an Student
+                </h2>
+
+                <form [formGroup]="studentForm">
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="form3Example1cg"
+                      class="form-control form-control-lg"
+                      formControlName="name"
+                    />
+                    <label class="form-label" for="form3Example1cg"
+                      >Your Name</label
+                    >
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="form3Example3cg"
+                      class="form-control form-control-lg"
+                      formControlName="email"
+                    />
+                    <label class="form-label" for="form3Example3cg"
+                      >Your Email</label
+                    >
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="number"
+                      id="form3Example4cg"
+                      class="form-control form-control-lg"
+                      formControlName="phone"
+                    />
+                    <label class="form-label" for="form3Example4cg"
+                      >Phone</label
+                    >
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input
+                      type="date"
+                      id="form3Example4cdg"
+                      class="form-control form-control-lg"
+                      formControlName="batch"
+                    />
+                    <label class="form-label" for="form3Example4cdg"
+                      >Batch</label
+                    >
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="radio"
+                      id="form3Example4cdg"
+                      class="form-check"
+                      formControlName="male"
+                      value="male"
+                    />
+                    <label class="form-label" for="form3Example4cdg"
+                      >Male</label
+                    >
+                  </div>
+                  <input
+                    type="radio"
+                    id="form3Example4cdg"
+                    class="form-check"
+                    formControlName="female"
+                    value="female"
+                  />
+                  <label class="form-label" for="form3Example4cdg"
+                    >Female</label
+                  >
+                  <div formGroupName="address">
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="city"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >City</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="mandal"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >Mandal</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="district"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >District</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="state"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >state</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="number"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="pincode"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >Pincode</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary" (click)="addEducation()">
+                      Add education Details
+                    </button>
+                  </div>
+                  <div formArrayName="education">
+                    <div
+                      *ngFor="
+                        let education of educationFormArray.controls;
+                        let i = index
+                      "
+                    >
+                      <div formGroupName="{{ i }}">
+                        <div class="row">
+                          <div class="col-md-6 mt-md-0 mt-3">
+                            <label>Qualification</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              required
+                              formControlName="qualification"
+                            />
+                            <span
+                              class="text-danger"
+                              *ngIf="
+                                educationFormArray.controls[i].get(
+                                  'qualification'
+                                )?.invalid &&
+                                educationFormArray.controls[i].get(
+                                  'qualification'
+                                )?.touched
+                              "
+                            >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('qualification')?. errors?.['required']"
+                                >This field is required
+                              </span>
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('qualification')?. errors?.['minlength']"
+                                >Please enter at least 3 characaters</span
+                              >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('qualification')?. errors?. ['maxlength']"
+                                >Maximum 10 characters only</span
+                              >
+                            </span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mt-md-0 mt-3">
+                            <label>Year</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              required
+                              formControlName="year"
+                            />
+                            <span
+                              class="text-danger"
+                              *ngIf="
+                                educationFormArray.controls[i].get('year')
+                                  ?.invalid &&
+                                educationFormArray.controls[i].get('year')
+                                  ?.touched
+                              "
+                            >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('year')?. errors?.['required']"
+                                >This field is required
+                              </span>
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('year')?. errors?.['min']"
+                                >please enter valid year</span
+                              >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('year')?. errors?. ['max']"
+                                >Please enter your properly</span
+                              >
+                            </span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mt-md-0 mt-3">
+                            <label>Percentage</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              required
+                              formControlName="percentage"
+                            />
+                            <span
+                              class="text-danger"
+                              *ngIf="
+                                educationFormArray.controls[i].get('percentage')
+                                  ?.invalid &&
+                                educationFormArray.controls[i].get('percentage')
+                                  ?.touched
+                              "
+                            >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('percentage')?. errors?.['required']"
+                                >This field is required
+                              </span>
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('percentage')?. errors?.['min']"
+                                >Please enter percentage with numbers</span
+                              >
+                              <span
+                                *ngIf="educationFormArray.controls[i].get('percentage')?. errors?. ['max']"
+                                >percentage should be 2 numbers only</span
+                              >
+                            </span>
+                          </div>
+                        </div>
+                        <div>
+                          <button class="btn btn-danger" (click)="delete(i)">
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div formGroupName="company">
+                    <h2>Company details</h2>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="name"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >name</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="location"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >Location</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="package"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >Package</label
+                      >
+                    </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input
+                        type="date"
+                        id="form3Example4cg"
+                        class="form-control form-control-lg"
+                        formControlName="offerDate"
+                      />
+                      <label class="form-label" for="form3Example4cg"
+                        >Offer Date</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <label for="">Source Type</label>
+                    <div class="d-flex" mx-2>
+                      <div class="d-flex">
+                        <input
+                          type="radio"
+                          class="form-check"
+                          formControlName="sourceType"
+                          value="direct"
+                        />
+                        <label for="">Direct</label>
+                      </div>
+                      <div class="d-flex">
+                        <input
+                          type="radio"
+                          class="form-check"
+                          formControlName="sourceType"
+                          value="referral"
+                        />
+                        <label for="">Referral</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="studentForm.get('sourceType')?.value == 'direct'">
+                    <label for="">Direct</label>
+                    <input type="text" class="form-control" formControlName="direct" />
+                  </div>
+                  <div *ngIf="studentForm.get('sourceType')?.value == 'referral'">
+                    <label for="">Referal</label>
+                    <input type="text" class="form-control" formControlName="referral" />
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                      (click)="submit()"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
